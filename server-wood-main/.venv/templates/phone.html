@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block content %}
+<div style="text-align: center;align-items: center; padding-top: 40px;">
+    <!-- <h1>Chụp ảnh kiểm tra Gỗ thông qua hình ảnh vân </h1> -->
+    <h1>Chụp ảnh trực tiếp từ camera</h1>
+    <video id="video" with="auto" height="auto" autoplay></video><br>
+    <button id="captureButton" type="button" class="btn btn-primary rounded-circle" >Chụp ảnh</button><br>
+    <canvas id="canvas" width="auto" height="auto"></canvas><br>
+    <div id="result" style="margin-top: 10px;"></div>
+    <div id="resultImage"></div>
+    </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    const video = document.getElementById('video');
+    const canvas = document.getElementById('canvas');
+    const captureButton = document.getElementById('captureButton');
+    const uploadButton = document.getElementById('uploadButton');
+
+    captureButton.addEventListener('click', () => {
+        var elements = document.getElementsByClassName('ClassName');
+        var elementsArray = Array.from(elements);
+
+        // Iterate through the array and remove each element
+        elementsArray.forEach(function(element) {
+            element.remove();
+        });
+        // Lấy canvas context
+        const context = canvas.getContext('2d');
+
+        // Sao chép hình ảnh từ video element vào canvas
+        context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+        // Chuyển hình ảnh từ canvas thành Blob object
+        canvas.toBlob((blob) => {
+            // Tạo một FormData object
+            const formData = new FormData();
+            
+            // Thêm ảnh từ Blob object vào FormData object
+            formData.append('image', blob, 'image.jpg');
+
+            // Gửi FormData object
+            $.ajax({
+            url: '/check-wood',
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                if (response=="Not wood"){
+                    let div = document.createElement('div');
+                    div.textContent = "hệ thống xác định không phải gỗ ! trong quá trình kiểm tra chúng tôi  có thể có sai sót  mời bạn thử lại";
+                    div.classList.add('ClassName');
+                    let container = document.getElementById('result');
+                    container.appendChild(div)
+                }
+                else{
+                    // document.getElementById('result').innerText = response;
+                    let divList = document.createElement('div');
+                    for (let i = 0; i < response[0].length; i++) {
+                        let div = document.createElement('div');
+                        div.textContent = response[1][i] + ' : ' + response[0][i];
+                        div.classList.add('ClassName');
+                        divList.appendChild(div);
+                    }
+                    let container = document.getElementById('result');
+                    container.appendChild(divList);
+                }
+            },
+            error: function(jqXHR, textStatus, errorMessage) {
+            console.error('Failed to upload file:', errorMessage);
+            }
+        });
+        }, 'image/jpeg', 0.5);
+    })
+    navigator.mediaDevices.getUserMedia({ video: true })
+        .then(stream => {
+            video.srcObject = stream;
+        })
+        .catch(error => {
+            console.error('Error accessing camera:', error);
+        });
+</script>
+{% endblock %}

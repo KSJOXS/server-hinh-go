@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% block content %}
+<div>
+    <div style="text-align: center;align-items: center; padding-top: 40px; display: flex;justify-content: center;">
+        <input type="file" id="fileInput">
+    </div>
+    <img src="#" id="previewImage" style="display: none; max-width: 300px; margin-top: 10px;">
+    <div id="result" style="margin-top: 10px;"></div>
+    <div id="resultImage"></div>
+    
+    <button class="btn btn-primary rounded-circle" type="button" onclick="uploadImage()" >Xác nhận</button>    
+</div>
+<script>
+    function uploadImage() {
+        var elements = document.getElementsByClassName('ClassName');
+
+        // Convert the HTMLCollection to an array for safe iteration
+        var elementsArray = Array.from(elements);
+
+        // Iterate through the array and remove each element
+        elementsArray.forEach(function(element) {
+            element.remove();
+        });
+        const fileInput = document.getElementById('fileInput');
+        const formData = new FormData();
+        formData.append('image', fileInput.files[0]);
+        $.ajax({
+            url: '/check-wood',
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                if (response=="Not wood"){
+                    let div = document.createElement('div');
+                    div.textContent = "hệ thống xác định không phải gỗ ! trong quá trình kiểm tra chúng tôi  có thể có sai sót  mời bạn thử lại";
+                    div.classList.add('ClassName');
+                    let container = document.getElementById('result');
+                    container.appendChild(div)
+                }
+                else{
+                    // document.getElementById('result').innerText = response;
+                    let divList = document.createElement('div');
+                    let count=0;
+                    for (let i = 0; i < response[0].length; i++) {
+                        let div = document.createElement('div');
+                        div.textContent = response[1][i] + ' : ' + response[0][i]+ '%';
+                        count+=response[0][i];
+                        div.classList.add('ClassName');
+                        divList.appendChild(div);
+                    }
+                    if (count<100){
+                        let div = document.createElement('div');
+                        div.classList.add('ClassName');
+                        div.textContent= 'Các loại gỗ khác dự nằm trong ' + `${(100-count).toFixed(2)}` + '%'
+                        divList.appendChild(div)
+                    }
+                    let container = document.getElementById('result');
+                    
+                    container.appendChild(divList);
+                   
+                    // for(let i=0;i<6;i++){
+                    //     var img = $("<img />", {
+                    //         "src": "../static/images/tram-uc.jpg",
+                    //         "alt": "Image " + i
+                    //     });
+                    //     // Append the image to the div
+                    //     $('#resultImage').append(img);
+                    // }
+                }
+            },
+            error: function(jqXHR, textStatus, errorMessage) {
+              console.error('Failed to upload file:', errorMessage);
+            }
+        });
+    }
+
+    fileInput.onchange = function() {
+        const file = this.files[0];
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const previewImage = document.getElementById('previewImage');
+            previewImage.src = e.target.result;
+            previewImage.style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+    };
+</script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+{% endblock %}

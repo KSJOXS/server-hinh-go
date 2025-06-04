@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Python Flask</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link href="../static/postImage.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="container">
+        <div class="header">
+            <nav class="header-menu">
+              <ul class="menu">
+                <li role="presentation" ><a href="/home">Trang chủ</a></li>
+                <li role="presentation"><a href="/check-wood">Sử dụng ảnh từ thiết bị</a></li>
+                <li role="presentation" id="phanTuCanAn"><a href="/phone">Sử dụng ảnh trực tiếp</a></li>
+              </ul>
+            </nav>
+        </div>
+    </div>
+    <script>
+      function kiemTraKichThuocManHinh() {
+        var kichThuocManHinh = window.innerWidth;
+        var element = document.getElementById("phanTuCanAn");
+
+        if (kichThuocManHinh < 500) {
+            element.style.display = "none";
+        }
+      }
+
+      // Gọi hàm kiểm tra khi trang web được tải và khi kích thước màn hình thay đổi
+      window.onload = kiemTraKichThuocManHinh;
+    </script>
+    {% block content %}{% endblock %}
+  </body>
+</html>

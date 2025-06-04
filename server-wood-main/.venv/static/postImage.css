@@ -1,0 +1,50 @@
+.header-menu>ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  float: right;
+}
+
+body{
+  text-align: -webkit-center;
+}
+
+.header-menu>ul>li {
+  display: inline;
+  margin-right: 20px;
+}
+
+.header-menu>ul>li:last-child {
+  margin-right: 0;
+}
+
+.header-menu>ul>li>a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  transition: color .3s;
+  padding: 5px 10px;
+}
+
+.header-menu>ul>li>a:hover {
+  color: #0511bb;
+  background-color: aliceblue;
+}
+
+.header-menu>ul>li:hover {
+  background-color: #f2f2f2;
+  border-radius: 5px;
+}
+
+.header{
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.card-image{
+  margin: 20px 20px;
+}
+
+.row{
+  display: inline-flex;
+}
