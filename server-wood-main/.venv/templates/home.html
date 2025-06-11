@@ -1,70 +1,98 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="container-fluid">
+<div class="container-fluid py-4"> {# Added py-4 for top/bottom padding #}
   <div class="container">
-    <h1>1. Một số loài gỗ đặc trưng tại Việt Nam</h1>
+    <h1 class="mb-4">1. Một số loài gỗ đặc trưng tại Việt Nam</h1> {# Added mb-4 for bottom margin #}
   </div>
-  <div class="container" style="background-color: rgb(239 239 239)">
-    <div class="row">
-      <div class="col-6">
-        <div class="card card-image">
-          <img src="../static/images/tram-uc.jpg" class="card-img-top rounded img-thumbnail" alt="...">
+
+  <div class="container p-4 rounded" style="background-color: rgb(239 239 239);"> {# Added p-4 for internal padding and rounded for softer corners #}
+    <div class="row g-4"> {# Added g-4 for consistent gutter (gap) between columns #}
+      {# First row #}
+      <div class="col-12 col-md-6"> {# col-12 for full width on small screens, col-md-6 for half width on medium and larger #}
+        <div class="card h-100 shadow-sm"> {# Added h-100 to make cards same height, shadow-sm for subtle shadow #}
+          <img src="../static/images/go_t.jpg" class="card-img-top rounded-top img-fluid" alt="Gỗ Tràm"> {# rounded-top and img-fluid #}
           <div class="card-body">
-            <b class="card-title">Gỗ tràm </b>
-            <p class="card-text">Gỗ Tràm (còn được gọi là gỗ keo)là một trong những loài gỗ phổ nhất ở Việt Nam</p>
+            <h5 class="card-title"><b>Gỗ tràm</b></h5> {# Changed to h5 for semantic hierarchy #}
+            <p class="card-text">Gỗ Tràm (còn được gọi là gỗ keo) là một trong những loài gỗ phổ biến nhất ở Việt Nam.</p>
           </div>
         </div>
       </div>
-      <div class="col-6">
-        <div class="card card-image">
-          <img src="../static/images/cay_thong.jpg" class="card-img-top rounded img-thumbnail" alt="...">
+      <div class="col-12 col-md-6">
+        <div class="card h-100 shadow-sm">
+          <img src="../static/images/cay_thong.jpg" class="card-img-top rounded-top img-fluid" alt="Gỗ Thông">
           <div class="card-body">
-            <b class="card-title">Gỗ Thông </b>
+            <h5 class="card-title"><b>Gỗ Thông</b></h5>
             <p class="card-text">Gỗ thông phổ biến ở Việt Nam có mặt khắp mọi miền của tổ quốc.</p>
           </div>
         </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="card card-image">
-        <img src="../static/images/bach_dan.jpg" class="card-img-top rounded img-thumbnail" alt="...">
-        <div class="card-body">
-          <b class="card-title">Gỗ Bạch Đàn </b>
-          <p class="card-text">Gỗ bạch đàn là một loại vật liệu phổ biến trong đời sống đem lại giá trị kinh tế cao</p>
+
+      {# Second row #}
+      <div class="col-12 col-md-6"> {# FIX: Added col-12 col-md-6 here #}
+        <div class="card h-100 shadow-sm">
+          <img src="../static/images/bach_dan.jpg" class="card-img-top rounded-top img-fluid" alt="Gỗ Bạch Đàn">
+          <div class="card-body">
+            <h5 class="card-title"><b>Gỗ Bạch Đàn</b></h5>
+            <p class="card-text">Gỗ bạch đàn là một loại vật liệu phổ biến trong đời sống đem lại giá trị kinh tế cao.</p>
+          </div>
         </div>
       </div>
-      <div class="card card-image">
-        <img src="../static/images/cay-lim-xanh.jpg" class="card-img-top rounded img-thumbnail" alt="...">
-        <div class="card-body">
-          <b class="card-title">Gỗ Lim </b>
-          <p class="card-text">Gỗ lim thuộc giống thực vật gỗ lớn và có giá trị về kinh tế cao.</p>
+      <div class="col-12 col-md-6"> {# FIX: Added col-12 col-md-6 here #}
+        <div class="card h-100 shadow-sm">
+          <img src="../static/images/cay-lim-xanh.jpg" class="card-img-top rounded-top img-fluid" alt="Gỗ Lim">
+          <div class="card-body">
+            <h5 class="card-title"><b>Gỗ Lim</b></h5>
+            <p class="card-text">Gỗ lim thuộc giống thực vật gỗ lớn và có giá trị về kinh tế cao.</p>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="card card-image">
-        <img src="../static/images/go-trac.jpg" class="card-img-top rounded img-thumbnail" alt="...">
-        <div class="card-body">
-          <b class="card-title"> Gỗ trắc (gỗ cẩm lai)</b>
-          <p class="card-text">Gỗ trắc là loại cây gỗ thân lớn, vô cùng rắn chắc và có khối lượng cao, chất liệu gỗ dai và có giá trị cao về kinh tế.</p>
+
+      {# Third row #}
+      <div class="col-12 col-md-6"> {# FIX: Added col-12 col-md-6 here #}
+        <div class="card h-100 shadow-sm">
+          <img src="../static/images/go-trac.jpg" class="card-img-top rounded-top img-fluid" alt="Gỗ Trắc">
+          <div class="card-body">
+            <h5 class="card-title"><b>Gỗ trắc (gỗ cẩm lai)</b></h5>
+            <p class="card-text">Gỗ trắc là loại cây gỗ thân lớn, vô cùng rắn chắc và có khối lượng cao, chất liệu gỗ dai và có giá trị cao về kinh tế.</p>
+          </div>
         </div>
       </div>
-      <div class="card card-image">
-        <img src="../static/images/go-xoan.jpg" class="card-img-top rounded img-thumbnail" alt="...">
-        <div class="card-body">
-          <b class="card-title">Gỗ Xoan </b>
-          <p class="card-text">Gỗ xoan đào là loại gỗ tự nhiên bền đẹp, chất lượng và có tính thẩm mỹ.</p>
+      <div class="col-12 col-md-6"> {# FIX: Added col-12 col-md-6 here #}
+        <div class="card h-100 shadow-sm">
+          <img src="../static/images/go-xoan.jpg" class="card-img-top rounded-top img-fluid" alt="Gỗ Xoan">
+          <div class="card-body">
+            <h5 class="card-title"><b>Gỗ Xoan</b></h5>
+            <p class="card-text">Gỗ xoan đào là loại gỗ tự nhiên bền đẹp, chất lượng và có tính thẩm mỹ.</p>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="container">
-    <h1>2.Tài nguyên gỗ và thực trạng</h1>
-    <p>Tại Việt Nam, tài nguyên gỗ được tận dụng đáng kể để sản xuất và xuất khẩu các mặt hàng đồ gỗ. Nguồn gỗ chủ yếu đến từ rừng trồng trong nước và gỗ nhập khẩu. Năm 2020, diện tích rừng trồng đạt khoảng 4,4 triệu ha, trong đó diện tích keo chiếm hơn 53%. Ngoài ra, 60-70% lượng gỗ nhập khẩu được sử dụng chủ yếu để chế biến và xuất khẩu đồ gỗ. Tuy nhiên, có những biến động lớn trong nguồn cung gỗ nhập khẩu gần đây, đặc biệt là do ảnh hưởng của đại dịch COVID-19.
-  
-      Về chứng chỉ bền vững, hiện Việt Nam đã có 226,429 ha rừng đạt chứng chỉ FSC và 54,529 ha rừng đạt chứng chỉ VFCS/PEFC. Tuy nhiên, việc tạo nguồn gỗ rừng trồng chất lượng cao vẫn còn đối diện với nhiều thách thức, và ổn định về nguồn gỗ nguyên liệu đầu vào có vai trò quan trọng đối với sự phát triển của ngành gỗ.
-      
-      Nguồn cung gỗ keo rừng trồng tại Việt Nam đang có xu hướng tăng, đặc biệt là do chính sách khuyến khích mở rộng rừng trồng và các biện pháp kỹ thuật nhằm tăng năng suất và chất lượng gỗ.</p>
-  </div>
+    </div> {# End of row g-4 #}
+  </div> {# End of container for cards #}
+
+<div class="container mt-5">
+  <h1 class="mb-3">2. Tài nguyên gỗ và thực trạng tại Việt Nam</h1>
+  <p class="lead">
+    Tại Việt Nam, ngành công nghiệp chế biến và xuất khẩu đồ gỗ đóng vai trò quan trọng trong nền kinh tế, và việc tận dụng tài nguyên gỗ luôn được chú trọng. Nguồn cung gỗ chính cho ngành này đến từ hai kênh chủ yếu: **rừng trồng trong nước** và **gỗ nhập khẩu**.
+  </p>
+
+  <p>
+    **Về nguồn gỗ trong nước:** Việt Nam đã và đang nỗ lực phát triển diện tích rừng trồng. Cụ thể, vào năm 2020, tổng diện tích rừng trồng của cả nước đã đạt khoảng **4,4 triệu hecta**, trong đó cây keo (Acacia) chiếm một tỷ lệ đáng kể, lên tới hơn 53%. Gỗ keo và một số loại cây trồng khác là nguồn nguyên liệu bền vững, giúp giảm phụ thuộc vào gỗ tự nhiên và bảo vệ môi trường.
+  </p>
+
+  <p>
+    **Về gỗ nhập khẩu:** Khoảng 60-70% lượng gỗ nguyên liệu được sử dụng trong ngành chế biến và xuất khẩu đồ gỗ của Việt Nam là từ nguồn nhập khẩu. Điều này cho thấy sự phụ thuộc nhất định vào thị trường gỗ quốc tế. Tuy nhiên, nguồn cung gỗ nhập khẩu gần đây đã và đang phải đối mặt với nhiều biến động lớn, đặc biệt là do những ảnh hưởng sâu rộng từ **đại dịch COVID-19**. Các yếu tố như gián đoạn chuỗi cung ứng, chi phí vận chuyển tăng cao, và chính sách kiểm soát dịch bệnh đã gây ra không ít khó khăn cho việc nhập khẩu nguyên liệu.
+  </p>
+
+  <p>
+    **Về chứng chỉ bền vững:** Để đáp ứng yêu cầu của thị trường quốc tế về nguồn gốc gỗ hợp pháp và bền vững, Việt Nam đã tích cực thúc đẩy việc cấp chứng chỉ rừng. Đến nay, cả nước đã có khoảng **226.429 hecta rừng đạt chứng chỉ FSC** (Forest Stewardship Council) và **54.529 hecta rừng đạt chứng chỉ VFCS/PEFC** (Hệ thống chứng chỉ rừng quốc gia Việt Nam/Programme for the Endorsement of Forest Certification). Các chứng chỉ này không chỉ khẳng định uy tín của gỗ Việt Nam trên trường quốc tế mà còn đảm bảo việc khai thác và quản lý rừng được thực hiện một cách có trách nhiệm, bảo vệ đa dạng sinh học và lợi ích cộng đồng.
+  </p>
+
+  <p>
+    Mặc dù vậy, ngành gỗ Việt Nam vẫn đang đối mặt với nhiều thách thức trong việc tạo ra nguồn gỗ rừng trồng chất lượng cao, đáp ứng cả về số lượng và tiêu chuẩn quốc tế. Việc **ổn định nguồn gỗ nguyên liệu đầu vào** là yếu tố then chốt, đóng vai trò sống còn đối với sự phát triển bền vững và khả năng cạnh tranh của ngành gỗ trong tương lai.
+  </p>
+
+  <p>
+    Trong bối cảnh đó, nguồn cung gỗ keo rừng trồng tại Việt Nam đang cho thấy xu hướng tăng trưởng tích cực. Điều này có được là nhờ các chính sách khuyến khích mở rộng diện tích rừng trồng, cùng với việc áp dụng các biện pháp kỹ thuật tiên tiến nhằm nâng cao năng suất và chất lượng gỗ rừng trồng. Đây là tín hiệu đáng mừng, góp phần củng cố nền tảng nguyên liệu cho ngành gỗ nước nhà.
+  </p>
 </div>
 {% endblock %}

@@ -25,10 +25,10 @@ def hello_world():
     max_value=np.max(res_prev)
     if max_value==res_prev[2]:
         img = img.resize((50, 50))
-        img_array = np.array(img) / 255.0  # Chuẩn hóa giá trị pixel từ 0-255 thành 0-1
+        img_array = np.array(img) / 255.0  
         img_array = np.expand_dims(img_array, axis=0)
-        # Gửi ảnh đến TensorFlow Serving để thực hiện dự đoán
-        server_url = 'http://localhost:8500/v1/models/wood:predict'  # Thay đổi địa chỉ này thành địa chỉ của TensorFlow Serving
+       
+        server_url = 'http://localhost:8500/v1/models/wood:predict'  
         response = requests.post(server_url, json={"instances": img_array.tolist()})
         prediction = response.json()
         print(response)
@@ -40,12 +40,13 @@ def hello_world():
                 if array[i]<array[j]:
                     tam = array[i]
                     array[i]=array[j]
+                    
                     array[j]=tam
 
                     temp = labs[i]
                     labs[i]=labs[j]
                     labs[j]=temp
-        #return render_template('postImage.html',dbs=dbs,labs=labs)
+        
         dbs = [x for x in array if x >= 3]
 
         resp=[dbs,labs[0:len(dbs)]]
